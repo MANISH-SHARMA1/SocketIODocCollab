@@ -1,0 +1,56 @@
+.messages {
+  display: flex;
+  color: green;
+  gap: 50px;
+  margin: 25px 50px;
+}
+
+.document {
+  flex: 1;
+  border: 1px solid yellowgreen;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.textArea {
+  width: 100%;
+  height: 70vh;
+  padding: 10px;
+  border: 2px solid yellowgreen;
+  border-radius: 10px;
+  background-color: white;
+}
+
+.users {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin: 10px 0px;
+  font-weight: bold;
+}
+
+#user {
+  border: 1px solid green;
+  color: green;
+  background-color: whitesmoke;
+  border-radius: 5px;
+  padding: 5px 10px;
+}
+
+#focus:focus {
+  outline: none;
+}
+
+@media screen and (max-width: 760px) {
+  .messages {
+    display: block;
+  }
+
+  .users {
+    display: block;
+  }
+
+  .textArea {
+    margin-top: 10px;
+  }
+}

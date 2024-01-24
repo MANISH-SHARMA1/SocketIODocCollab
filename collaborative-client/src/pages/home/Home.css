@@ -1,0 +1,17 @@
+.collaborateApp {
+    background-color: pink;
+    padding: 22px 0px;
+  }
+  
+  h1 {
+    text-align: center;
+    color: yellowgreen;
+    background-color: rgba(255, 255, 0, 0.164);
+    border: 2px solid yellowgreen;
+  }
+  
+  h5{
+    color: red;
+    margin: 5px 0;
+  }
+  

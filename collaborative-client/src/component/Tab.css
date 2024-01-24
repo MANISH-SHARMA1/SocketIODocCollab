@@ -1,0 +1,7 @@
+.tab {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  color: lightskyblue;
+  border: 1px solid blue;
+}

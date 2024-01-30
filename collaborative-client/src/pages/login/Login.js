@@ -12,12 +12,12 @@ function Login() {
   async function handleSubmit(e) {
     e.preventDefault();
     try {
-      const response = await axiosClient.post("/auth/login", {
+      const response = await axiosClient.post("auth/login", {
         email,
         password,
       });
       setItem(KEY_ACCESS_TOKEN, response.result.accessToken);
-      navigate("/");
+      navigate("/home");
     } catch (error) {
       console.log(error);
     }

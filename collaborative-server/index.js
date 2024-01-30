@@ -4,6 +4,7 @@ const socketIO = require("socket.io");
 const dbConnect = require("./dbConnect");
 const authRouter = require("./router/router");
 const cors = require("cors");
+const { log } = require("console");
 
 const app = express();
 const server = http.createServer(app);
@@ -11,8 +12,20 @@ const server = http.createServer(app);
 const io = socketIO(server, {
   cors: {
     origin: "*",
+    credentials: true,
   },
 });
+
+
+
+//middlewares
+app.use(express.json({ limit: "10mb" }));
+app.use(
+  cors({
+    origin: "*",
+    credentials: true,
+  })
+);
 
 // Map to store connected clients
 const connectedClients = new Map();
@@ -25,6 +38,7 @@ io.on("connection", (socket) => {
 
   socket.on("enter", () => {
     const totalClient = getTotalClients();
+    console.log(totalClient);
     io.emit("totalUser", totalClient);
   });
 
@@ -34,7 +48,8 @@ io.on("connection", (socket) => {
   });
 
   socket.on("commit message", ({ collabId, message, style }) => {
-    io.to(collabId).emit("receiveCommit message", { message, style });
+    console.log(collabId, message, style);
+    io.to(collabId).emit("receiveCommitMessage", { message, style });
   });
 
   socket.on("disconnect", (reason) => {
@@ -42,9 +57,9 @@ io.on("connection", (socket) => {
   });
 });
 
-io.on("connect_error", (error)=> {
-  console.error("Connection error",error)
-})
+io.on("connect_error", (error) => {
+  console.error("Connection error", error);
+});
 
 // FUNCTION TO COUNT TOTAL NUMBER OF CLIENTS
 function getTotalClients() {
@@ -57,15 +72,6 @@ const PORT = 5000;
 server.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
 });
-
-//middlewares
-app.use(express.json({ limit: "10mb" }));
-app.use(
-  cors({
-    credentials: true,
-    origin: "*",
-  })
-);
 
 app.use("/auth", authRouter);
 

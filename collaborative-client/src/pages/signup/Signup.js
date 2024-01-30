@@ -11,11 +11,12 @@ function Signup() {
   async function handleSubmit(e) {
     e.preventDefault();
     try {
-       await axiosClient.post("/auth/signup", {
+      const result = await axiosClient.post("/auth/signup", {
         name,
         email,
         password,
       });
+      console.log(result);
     } catch (error) {
       console.log(error);
     }

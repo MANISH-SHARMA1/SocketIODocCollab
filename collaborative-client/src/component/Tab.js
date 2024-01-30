@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Socket from "../component/Socket";
+import "./Tab.css";
 
 const Tab = () => {
   const [fontStyle, setFontStyle] = useState("normal");

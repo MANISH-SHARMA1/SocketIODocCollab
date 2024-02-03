@@ -4,7 +4,6 @@ const socketIO = require("socket.io");
 const dbConnect = require("./dbConnect");
 const authRouter = require("./router/router");
 const cors = require("cors");
-const { log } = require("console");
 
 const app = express();
 const server = http.createServer(app);
@@ -22,7 +21,7 @@ const io = socketIO(server, {
 app.use(express.json({ limit: "10mb" }));
 app.use(
   cors({
-    origin: "*",
+    origin: "http://localhost:3000",
     credentials: true,
   })
 );
